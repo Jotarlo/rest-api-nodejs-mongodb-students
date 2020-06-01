@@ -4,5 +4,8 @@
         "host": "localhost",
         "port": "27017",
         "database":"StudentDB"
+    },
+    "secretkeys":{
+        "cryptokey":"L$zZB_uLe6dNj3#5"
     }
 }

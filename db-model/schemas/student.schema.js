@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 /** Schema instance */
 let Schema = mongoose.Schema;
+let mongooseUniqueValidator = require("mongoose-unique-validator");
 
 /** Student Schema Definition */
 let studentSchema = new Schema({
@@ -21,10 +22,18 @@ let studentSchema = new Schema({
         unique: false,
         required: true
     },
-    subjects: ['String']
+    subjects: [{
+        type: Schema.Types.ObjectId,
+        ref: "coll_course"
+    }],
+    password:{
+        type: "String",
+        required: true
+    }
 },
-{
-    timestamps: true
-});
+    {
+        timestamps: true
+    });
 
+studentSchema.plugin(mongooseUniqueValidator);
 module.exports = studentSchema;
